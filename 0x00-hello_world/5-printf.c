@@ -2,6 +2,7 @@
 
 /**
  * main - prints followed newline 
+ *
  * return: always 0 (success)
  */
 
