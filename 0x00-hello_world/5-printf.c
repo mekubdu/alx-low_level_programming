@@ -1,8 +1,8 @@
 #include <stdio.h>
+
 /**
- * main - prints "with proper grammer, but the outcome is 
- * a line of art," followed newline 
- * return always 0.
+ * main - prints "with proper grammer" followed newline 
+ * return: always 0 (success)
  */
 
 int main(void)
