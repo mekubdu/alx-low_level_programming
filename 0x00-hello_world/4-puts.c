@@ -3,6 +3,8 @@
 /**
  * main - Entry point
  *
+ * Description: "This program uses put rather than using print f"
+ *
  * return: 0 (Success)
 */
 
