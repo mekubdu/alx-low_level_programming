@@ -4,7 +4,7 @@
 /* more headers gose there */
 
 /**
- * main - Entry points 
+ * main - Entry point
  * Description - Prints if random generated number is +, Zero or -
  * Return: Always 0 (Success)
  */
@@ -18,7 +18,7 @@ int main(void)
 		printf("%d is negative\n", n);
 	else if (n == 0)
 		printf("%d is zero\n", n);
-	else 
+	else
 		printf("%d is positive\n", n);
 	return (0);
 }
