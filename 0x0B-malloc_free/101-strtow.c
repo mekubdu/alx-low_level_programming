@@ -1,66 +1,38 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
- * _isspace - check if a character is whitespace
- * @c: the character to check
+ * print_tab - Prints an array of string
+ * @tab: The array to print
  *
- * Return: 1 is c is a whitespace character, otherwise 0
+ * Return: nothing
  */
-int _isspace(int c)
+void print_tab(char **tab)
 {
-	if (c == 0x20 || (c >= 0x09 && c <= 0x0d))
-		return (1);
-	return (0);
+	int i;
+
+	for (i = 0; tab[i] != NULL; ++i)
+	{
+		printf("%s\n", tab[i]);
+	}
 }
 
-
 /**
- * strtow - split a string into words
- * @str: a pointer to the string to split
+ * main - check the code for ALX School students.
  *
- * Return: NULL if memory allocation fails or if str is NULL or empty (""),
- * otherwise return a pointer to the array of words terminated by a NULL
+ * Return: 1 if an error occurred, 0 otherwise
  */
-char **strtow(char *str)
+int main(void)
 {
-	char **words, *pos = str;
-	int w = 0, c;
+	char **tab;
 
-	if (!(str && *str))
-		return (NULL);
-	do {
-		while (_isspace(*pos))
-			++pos;
-		if (!*pos)
-			break;
-		while (*(++pos) && !_isspace(*pos))
-			;
-	} while (++w, *pos);
-	if (!w)
-		return (NULL);
-	words = (char **) malloc(sizeof(char *) * (w + 1));
-	if (!words)
-		return (NULL);
-	w = 0, pos = str;
-	do {
-		while (_isspace(*pos))
-			++pos;
-		if (!*pos)
-			break;
-		for (str = pos++; *pos && !_isspace(*pos); ++pos)
-			;
-		words[w] = (char *) malloc(sizeof(char) * (pos - str + 1));
-		if (!words[w])
-		{
-			while (w >  0)
-				free(words[--w]);
-			free(words);
-			return (NULL);
-		}
-		for (c = 0; str < pos; ++c, ++str)
-			words[w][c] = *str;
-		words[w][c] = '\0';
-	} while (++w, *pos);
-	words[w] = NULL;
-	return (words);
+	tab = strtow("      ALX School         #cisfun      ");
+	if (tab == NULL)
+	{
+		printf("Failed\n");
+		return (1);
+	}
+	print_tab(tab);
+	return (0);
 }
