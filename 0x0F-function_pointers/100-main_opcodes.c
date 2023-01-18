@@ -1,35 +1,30 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 /**
- * main- Entry point
-(* a blank line
- *@argc: the number of parameters.
- *@argv: the parameeters in the case the number ob bytes.
-* Description: this program prints opcodes in hexa)?
-* Return: 0 in succes
-*/
+* main - number of bytes
+*@argc: argument counter
+*@argv: argument vector
+*Return: 0
+**/
+
 int main(int argc, char *argv[])
 {
-	int i, n;
+	int byte;
 
-
-	if (argc != 2)
+	if (argc < 2)
 	{
 		printf("Error\n");
-		return (1);
+		exit(1);
 	}
-	n = atoi(argv[1]);
-	if (n < 0)
+
+	byte = atoi(argv[1]);
+
+	if (byte < 0)
 	{
 		printf("Error\n");
 		exit(2);
 	}
 
-	for (i = 0; i < n; i++)
-	{
-		printf("%02hhx", *((char *)main + i));
-		if (i < n - 1)
-			printf(" ");
-		else
-			printf("\n");
-	}
+	return (0);
+}
