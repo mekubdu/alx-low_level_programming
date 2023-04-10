@@ -1,8 +1,3 @@
-/*
- * File: 100-sorted_hash_table.c
- * Auth: M.M.C
- */
-
 #include "hash_tables.h"
 
 shash_table_t *shash_table_create(unsigned long int size);
@@ -113,7 +108,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 			tmp = tmp->snext;
 		new->sprev = tmp;
 		new->snext = tmp->snext;
-OAOAOA		if (tmp->snext == NULL)
+		if (tmp->snext == NULL)
 			ht->stail = new;
 		else
 			tmp->snext->sprev = new;
@@ -143,15 +138,15 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 	index = key_index((const unsigned char *)key, ht->size);
 	if (index >= ht->size)
 		return (NULL);
-OAOAOA
-OAOAOAOAOAOA	node = ht->shead;
-OAOAOA	while (node != NULL && strcmp(node->key, key) != 0)
-OAOAOAOAOAOA		node = node->snext;
 
-OAOAOA	return ((node == NULL) ? NULL : node->value);
+	node = ht->shead;
+	while (node != NULL && strcmp(node->key, key) != 0)
+		node = node->snext;
+
+	return ((node == NULL) ? NULL : node->value);
 }
-OAOAOA
-OAOAOA/**
+
+/**
  * shash_table_print - Prints a sorted hash table in order.
  * @ht: A pointer to the sorted hash table.
  */
@@ -168,17 +163,17 @@ void shash_table_print(const shash_table_t *ht)
 	{
 		printf("'%s': '%s'", node->key, node->value);
 		node = node->snext;
-OAOAOA		if (node != NULL)
+		if (node != NULL)
 			printf(", ");
-OAOAOAOAOAOA	}
-OAOAOAOAOAOAOAOAOA	printf("}\n");
+	}
+	printf("}\n");
 }
-OAOAOA
-OAOAOAOAOAOA/**
+
+/**
  * shash_table_print_rev - Prints a sorted hash table in reverse order.
-OAOAOA * @ht: A pointer to the sorted hash table to print.
+ * @ht: A pointer to the sorted hash table to print.
  */
-OAOAOAvoid shash_table_print_rev(const shash_table_t *ht)
+void shash_table_print_rev(const shash_table_t *ht)
 {
 	shash_node_t *node;
 
@@ -194,24 +189,24 @@ void shash_table_print(const shash_table_t *ht)
 		if (node != NULL)
 			printf(", ");
 	}
-OAOAOA	printf("}\n");
+	printf("}\n");
 }
-OAOAOA
-OAOAOA/**
+
+/**
  * shash_table_delete - Deletes a sorted hash table.
-OAOAOAOAOAOA * @ht: A pointer to the sorted hash table.
-OAOAOA */
+ * @ht: A pointer to the sorted hash table.
+ */
 void shash_table_delete(shash_table_t *ht)
-OAOAOA{
-OAOAOA	shash_table_t *head = ht;
+{
+	shash_table_t *head = ht;
 	shash_node_t *node, *tmp;
-OAOAOA
-OAOAOA	if (ht == NULL)
+
+	if (ht == NULL)
 		return;
 
-OAOAOA	node = ht->shead;
+	node = ht->shead;
 	while (node)
-OAOAOA	{
+	{
 		tmp = node->snext;
 		free(node->key);
 		free(node->value);
